@@ -162,11 +162,10 @@ function getPort() {
 function waitForReady() {
   console.log("Waiting for server to be ready");
   console.log("port: " + getPort());
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 200; i++) {
     let ret = spawnSync('curl', ['-s', `localhost:${getPort()}`]);
     if (ret.status === 0) {
       console.log("Server is ready");
-      break;
     }
     spawnSync('sleep', ['1']);
     console.log("Sleeping");

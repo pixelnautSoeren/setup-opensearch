@@ -165,9 +165,14 @@ function waitForReady() {
   for (let i = 0; i < 30; i++) {
     let ret = spawnSync('curl', ['-s', `localhost:${getPort()}`]);
     if (ret.status === 0) {
+      console.log("Server is ready");
       break;
     }
     spawnSync('sleep', ['1']);
+    console.log("Sleeping");
+    if (i === 29) {
+      console.log("Server is still not ready after 30s");
+    }
   }
 }
 
